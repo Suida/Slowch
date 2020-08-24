@@ -1,0 +1,37 @@
+#header-container {
+  display: flex;
+  justify-content: start;
+  padding: 0 60px;
+  background-color: #3D7E9A;
+}
+
+#header-nav {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 60px;
+  padding-left: 40px;
+}
+
+#header-nav ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#header-nav li {
+  display: inline;
+  margin: 0 20px;
+}
+
+#header-nav a {
+  font: bold 30px;
+  color: #fff;
+}
+
+#header-nav a:visited {
+  color: #fff;
+}
+
+#header-nav a.active {
+  color: #333;
+}

@@ -1,11 +1,21 @@
 import React from 'react';
+import {
+  BrowserRouter,
+} from 'react-router-dom';
 
+import Layout from '@/layouts';
+
+import {
+  Menu,
+} from 'antd';
 import { SyncOutlined } from '@ant-design/icons';
 
-export default function(props?: any) {
+const { Item } = Menu;
+
+export default () => {
   return (
-    <h1>
-      Hello, world {" "} <SyncOutlined spin />
-    </h1>
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
   );
 };
