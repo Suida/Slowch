@@ -1,6 +1,7 @@
 {
   "name": "Slowch",
   "version": "0.0.1",
+  "license": "BSD-2-Clause",
   "scripts": {
     "start": "webpack-dev-server"
   },
