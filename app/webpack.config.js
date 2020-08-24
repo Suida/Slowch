@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { getThemeVariables } = require('antd/dist/theme');
 
 module.exports = {
   mode: process.env.SLOWCH_MODE || 'development',
@@ -45,7 +46,22 @@ module.exports = {
       },
       {
         test: /\.less$/i,
-        use: ['style-loader', 'css-loader', 'less-laoder'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                modifyVars: getThemeVariables({
+                  dark: true,
+                  compact: true,
+                }),
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif)$/i,
@@ -56,7 +72,10 @@ module.exports = {
               limit: 8192
             }
           }
-        ]
+        ],
+        exclude: [
+          path.resolve(__dirname, 'node_modules'),
+        ],
       },
       {
         test: /\.svg$/i,
@@ -64,7 +83,10 @@ module.exports = {
           {
             loader: 'url-loader',
           }
-        ]
+        ],
+        exclude: [
+          path.resolve(__dirname, 'node_modules'),
+        ],
       },
     ],
   },
@@ -74,7 +96,7 @@ module.exports = {
     },
     modules: ['src', 'node_modules'],
     extensions: [
-      '.json', '.less' ,'.css', '.svg', 
+      '.json', '.svg', 
       '.gif', '.png', '.jpg',
       '.tsx', '.jsx', '.js',
     ],
